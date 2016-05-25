@@ -1,5 +1,7 @@
+//http://developer.mailchimp.com/documentation/mailchimp/reference/overview/
+
 (function() {
-	var url = "http://us13.api.mailchimp.com/3.0/templates";
+	var url = "http://us13.api.mailchimp.com/3.0/&c=?";
 	var data = {};
 	var sendMailBtn = document.getElementById("mailButton");
 
@@ -9,6 +11,7 @@
 		var ajaxSettings = {};
 		ajaxSettings.url = url;
 		ajaxSettings.data = data;
+		ajaxSettings.dataType = "jsonp";
 		ajaxSettings.method = "GET";
 		ajaxSettings.beforeSend = function(xhr){
 			xhr.setRequestHeader("Authorization", "Basic " + btoa("apikey: 43d2de8d65e47e0521bf1c4deca52a18-us13")); 
