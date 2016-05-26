@@ -4,12 +4,44 @@
     <meta charset="UTF-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title></title>
+    <title>Mail</title>
+    <style>
+    	#displayArea{
+    		margin: 10px 0 0 0;
+    		border-top: 1px solid black;
+    	}
+
+    	#allTemplatesWrapper{
+			width: 100%;
+			display: none;
+    	}
+    	.templateWrapper{
+    		width: 200px;
+    		height: 300px;
+    		display: inline-block;
+    		margin: 0 10px;
+    	}
+    	.templateHeader{
+			text-align: center;
+			margin: 0;
+    	}
+    	.templateWrapper img{
+    		margin: 0 0 0 5px;
+    		width: 190px;
+    		height: 220px;
+    	}
+    </style>
 </head>
-<body>
+<body id="body">
 	<h1>mailer</h1>
-	<button id="mailButton">Send Mail</button>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<button id="templates" class="actionButton">View Templates</button>
+	<button id="lists" class="actionButton">Lists</button>
+	<button id="reports" class="actionButton"> Reports</button>
+	<button id="campaigns" class="actionButton"> Campaigns</button>
+	<button id="campaignNew" class="actionButton"> New Campaign</button>
+	<div id="displayArea">
+		<div id="allTemplatesWrapper"></div>
+	</div>
 	<script src="script.js"></script>
 </body>
 </html>

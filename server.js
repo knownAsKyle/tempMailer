@@ -1,5 +1,34 @@
+var ajax = require("./mail.js");
 var connect = require('connect');
 var serveStatic = require('serve-static');
-connect().use(serveStatic(__dirname)).listen(8080, function() {
-    console.log('Server running on 8080...');
-});
+var bodyParser = require('body-parser');
+var app = connect();
+var port = 8080;
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use('/templates', templateResponse);
+app.use('/lists', templateResponse);
+app.use('/reports', templateResponse);
+app.use('/campaigns', templateResponse);
+app.use('/campaignNew', campaignNew);
+
+app.use(serveStatic(__dirname));
+app.listen(port, serverActive);
+
+function serverActive() {console.log("listening on port: ", port);}
+
+function templateResponse(req, res) {
+	console.log("call to: " + req._parsedUrl.path);
+	ajax.makeCall("https://us13.api.mailchimp.com/3.0" + req._parsedUrl.path, function(data) {
+		res.end(data);
+	});
+}
+
+function campaignNew(req, res){
+	console.log("call to!: " + req._parsedUrl.path);
+	console.log(req.body);
+	ajax.makeCall("https://us13.api.mailchimp.com/3.0/campaigns/b6e4a7f563/actions/test", function(data) {
+		res.end(data);
+	}, req.body);
+}
