@@ -17,10 +17,9 @@ p.makeCall = function(url, callback, post) {
 	}else{
 		xmlhttp.open("GET", url, true);
 	}
-	
 	xmlhttp.setRequestHeader("Authorization", this.apikey);
 	xmlhttp.onreadystatechange = function() {
-		console.log(" has it sent on server? ", xmlhttp.status);
+		console.log("Status: ", xmlhttp.status);
 		if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
 			callback(xmlhttp.responseText);
 		}else if(xmlhttp.readyState === 4 && xmlhttp.status === 406){

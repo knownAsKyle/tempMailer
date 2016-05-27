@@ -1,7 +1,7 @@
 (function() {
 
 	var emailData = {
-		"test_emails": ["kyle.uhan@gmail.com", "uhan@dciartform.com"],
+		"test_emails": ["kyle.uhan@gmail.com", "uhan@dciartform.com", "Jaschob@dciartform.com"],
 		"send_type": "html"
 	};
 	var allTemplatesWrapper = document.getElementById("allTemplatesWrapper");
@@ -13,10 +13,10 @@
 
 	var display = {};
 	display.templates = buildTemplateView;
-	display.lists = buildListView;
-	display.reports = buildReportView;
-	display.campaigns = buildCampaignsView;
-	display.campaignNew = buildCampaignsNewView;
+	display.lists = genericResponse;
+	display.reports = genericResponse;
+	display.campaigns = genericResponse;
+	display.campaignNew = genericResponse;
 
 
 	function handleActionButtonClick(e) {
@@ -75,7 +75,8 @@
 		allTemplatesWrapper.style.display = "block";
 	}
 
-	function buildListView(data) {
+	function genericResponse(data){
+		console.log(data);
 		try {
 			data = JSON.parse(data);
 			console.log(data);
@@ -85,33 +86,5 @@
 		}
 	}
 
-	function buildReportView(data) {
-		try {
-			data = JSON.parse(data);
-			console.log(data);
-		} catch (err) {
-			console.log("could not parse returned json");
-			return false;
-		}
-	}
 
-	function buildCampaignsView(data) {
-		try {
-			data = JSON.parse(data);
-			console.log(data);
-		} catch (err) {
-			console.log("could not parse returned json");
-			return false;
-		}
-	}
-
-	function buildCampaignsNewView(data) {
-		try {
-			data = JSON.parse(data);
-			console.log(data);
-		} catch (err) {
-			console.log("could not parse returned json");
-			return false;
-		}
-	}
 })();
